@@ -8,7 +8,7 @@ namespace Component1.InformationSystem.Commands
     {
         private readonly VehicleRepository _repository;
         private readonly Vehicle _newState;
-        private readonly Vehicle _previousState;
+        private readonly Vehicle? _previousState;
 
         public EditVehicleCommand(VehicleRepository repository, Vehicle newState)
         {

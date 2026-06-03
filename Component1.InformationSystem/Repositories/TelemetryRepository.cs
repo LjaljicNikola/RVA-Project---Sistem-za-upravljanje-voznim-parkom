@@ -12,7 +12,7 @@ namespace Component1.InformationSystem.Repositories
 
         public IEnumerable<VehicleTelemetry> GetAll() => _telemetries.ToList();
 
-        public VehicleTelemetry GetById(Guid id) => _telemetries.FirstOrDefault(t => t.Id == id);
+        public VehicleTelemetry? GetById(Guid id) => _telemetries.FirstOrDefault(t => t.Id == id);
 
         public void Add(VehicleTelemetry entity) => _telemetries.Add(entity);
 

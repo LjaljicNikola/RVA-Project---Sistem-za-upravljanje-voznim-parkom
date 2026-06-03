@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using CoreWCF;
 using Component1.InformationSystem.Models;
 using Component1.InformationSystem.Repositories;
 using Shared.Contracts.DTOs;
@@ -9,7 +8,6 @@ using Shared.Contracts.Interfaces;
 
 namespace Component1.InformationSystem.WCF
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class FleetService : IFleetService
     {
         private readonly VehicleRepository _vehicleRepository;

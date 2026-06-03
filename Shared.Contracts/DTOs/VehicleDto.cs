@@ -7,9 +7,9 @@ namespace Shared.Contracts.DTOs
     public class VehicleDto
     {
         [DataMember] public Guid Id { get; set; }
-        [DataMember] public string LicensePlate { get; set; }
-        [DataMember] public string Manufacturer { get; set; }
-        [DataMember] public string Model { get; set; }
+        [DataMember] public string LicensePlate { get; set; } = string.Empty;
+        [DataMember] public string Manufacturer { get; set; } = string.Empty;
+        [DataMember] public string Model { get; set; } = string.Empty;
         [DataMember] public int YearOfManufacture { get; set; }
     }
 }

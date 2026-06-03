@@ -12,7 +12,7 @@ namespace Component1.InformationSystem.Repositories
 
         public IEnumerable<Vehicle> GetAll() => _vehicles.ToList();
 
-        public Vehicle GetById(Guid id) => _vehicles.FirstOrDefault(v => v.Id == id);
+        public Vehicle? GetById(Guid id) => _vehicles.FirstOrDefault(v => v.Id == id);
 
         public void Add(Vehicle entity) => _vehicles.Add(entity);
 

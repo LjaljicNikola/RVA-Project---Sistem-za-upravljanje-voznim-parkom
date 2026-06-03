@@ -23,7 +23,7 @@ namespace Component1.InformationSystem.Commands
     {
         private readonly TelemetryRepository _repository;
         private readonly VehicleTelemetry _newState;
-        private readonly VehicleTelemetry _previousState;
+        private readonly VehicleTelemetry? _previousState;
 
         public EditTelemetryCommand(TelemetryRepository repository, VehicleTelemetry newState)
         {

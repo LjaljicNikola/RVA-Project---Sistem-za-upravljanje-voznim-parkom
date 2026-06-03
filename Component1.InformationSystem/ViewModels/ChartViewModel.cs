@@ -13,7 +13,8 @@ namespace Component1.InformationSystem.ViewModels
         private readonly TelemetryRepository _repository;
 
         public ObservableCollection<ISeries> Series { get; } = new();
-        public Axis[] XAxes { get; set; }
+
+        public Axis[] XAxes { get; set; } = System.Array.Empty<Axis>();
 
         public ChartViewModel(TelemetryRepository repository)
         {

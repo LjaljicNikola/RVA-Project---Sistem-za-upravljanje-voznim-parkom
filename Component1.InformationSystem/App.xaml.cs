@@ -4,7 +4,6 @@ using Component1.InformationSystem.Helpers;
 using Component1.InformationSystem.Repositories;
 using Component1.InformationSystem.Services;
 using Component1.InformationSystem.ViewModels;
-using Component1.InformationSystem.Views;
 using Component1.InformationSystem.WCF;
 using AppCommandManager = Component1.InformationSystem.Commands.CommandManager;
 
@@ -42,7 +41,7 @@ namespace Component1.InformationSystem
             _serviceHost = new FleetServiceHost();
             _serviceHost.Start(fleetService);
 
-            var window = new MainWindow { DataContext = mainVM };
+            var window = new Views.MainWindow { DataContext = mainVM };
             window.Show();
         }
 

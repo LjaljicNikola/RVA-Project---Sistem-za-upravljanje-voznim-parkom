@@ -22,7 +22,7 @@ namespace Component1.InformationSystem.Services
 
             var serializer = new XmlSerializer(typeof(List<Vehicle>));
             using var reader = new StreamReader(filePath);
-            return (List<Vehicle>)serializer.Deserialize(reader);
+            return (List<Vehicle>?)serializer.Deserialize(reader) ?? new List<Vehicle>();
         }
     }
 }
