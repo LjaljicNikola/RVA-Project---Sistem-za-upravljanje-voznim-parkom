@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net9.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>disable</ImplicitUsings>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-rc2" />
+		<PackageReference Include="CoreWCF.NetTcp" Version="1.5.2" />
+		<PackageReference Include="System.ServiceModel.NetTcp" Version="6.2.0" />
+
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Shared.Contracts\Shared.Contracts.csproj" />
+	</ItemGroup>
+</Project>	

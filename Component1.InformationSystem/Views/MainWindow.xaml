@@ -1,0 +1,110 @@
+<Window x:Class="Component1.InformationSystem.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+        Title="Fleet Management - Information System" Height="700" Width="1100">
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top">
+            <Button Content="Save" Command="{Binding SaveCommand}" Margin="4"/>
+            <Button Content="Load" Command="{Binding LoadCommand}" Margin="4"/>
+        </ToolBar>
+        <TabControl>
+            <TabItem Header="Vehicles">
+                <Grid Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel Grid.Column="0">
+                        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,8">
+                            <TextBox Text="{Binding VehicleVM.SearchText, UpdateSourceTrigger=PropertyChanged}"
+                                     Width="200" Margin="0,0,8,0" VerticalContentAlignment="Center"/>
+                            <TextBlock Text="Search" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <DataGrid ItemsSource="{Binding VehicleVM.FilteredVehicles}"
+                                  SelectedItem="{Binding VehicleVM.SelectedVehicle}"
+                                  AutoGenerateColumns="False" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="License Plate" Binding="{Binding LicensePlate}" Width="*"/>
+                                <DataGridTextColumn Header="Manufacturer" Binding="{Binding Manufacturer}" Width="*"/>
+                                <DataGridTextColumn Header="Model" Binding="{Binding Model}" Width="*"/>
+                                <DataGridTextColumn Header="Year" Binding="{Binding YearOfManufacture}" Width="80"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DockPanel>
+                    <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                        <TextBlock Text="License Plate" FontWeight="Bold"/>
+                        <TextBox Text="{Binding VehicleVM.LicensePlate, UpdateSourceTrigger=PropertyChanged}" Margin="0,2,0,8"/>
+                        <TextBlock Text="Manufacturer" FontWeight="Bold"/>
+                        <TextBox Text="{Binding VehicleVM.Manufacturer, UpdateSourceTrigger=PropertyChanged}" Margin="0,2,0,8"/>
+                        <TextBlock Text="Model" FontWeight="Bold"/>
+                        <TextBox Text="{Binding VehicleVM.Model, UpdateSourceTrigger=PropertyChanged}" Margin="0,2,0,8"/>
+                        <TextBlock Text="Year of Manufacture" FontWeight="Bold"/>
+                        <TextBox Text="{Binding VehicleVM.YearOfManufacture, UpdateSourceTrigger=PropertyChanged}" Margin="0,2,0,16"/>
+                        <Button Content="Add" Command="{Binding VehicleVM.AddCommand}" Margin="0,2"/>
+                        <Button Content="Edit" Command="{Binding VehicleVM.EditCommand}" Margin="0,2"/>
+                        <Button Content="Delete" Command="{Binding VehicleVM.DeleteCommand}" Margin="0,2"/>
+                        <Separator Margin="0,8"/>
+                        <Button Content="Undo" Command="{Binding VehicleVM.UndoCommand}" Margin="0,2"/>
+                        <Button Content="Redo" Command="{Binding VehicleVM.RedoCommand}" Margin="0,2"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Telemetry">
+                <Grid Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="320"/>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel Grid.Column="0">
+                        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,8">
+                            <TextBox Text="{Binding TelemetryVM.SearchText, UpdateSourceTrigger=PropertyChanged}"
+                                     Width="200" Margin="0,0,8,0" VerticalContentAlignment="Center"/>
+                            <TextBlock Text="Search" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <DataGrid ItemsSource="{Binding TelemetryVM.FilteredTelemetries}"
+                                  SelectedItem="{Binding TelemetryVM.SelectedTelemetry}"
+                                  AutoGenerateColumns="False" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Vehicle ID" Binding="{Binding VehicleId}" Width="*"/>
+                                <DataGridTextColumn Header="Reading Time" Binding="{Binding ReadingTime, StringFormat='{}{0:yyyy-MM-dd HH:mm}'}" Width="*"/>
+                                <DataGridTextColumn Header="Distance (km)" Binding="{Binding DistanceTraveled}" Width="100"/>
+                                <DataGridTextColumn Header="Fuel (L/100km)" Binding="{Binding FuelConsumption}" Width="100"/>
+                                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="120"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DockPanel>
+                    <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                        <TextBlock Text="Vehicle" FontWeight="Bold"/>
+                        <ComboBox ItemsSource="{Binding TelemetryVM.Vehicles}"
+                                  SelectedValuePath="Id"
+                                  SelectedValue="{Binding TelemetryVM.SelectedVehicleId}"
+                                  DisplayMemberPath="LicensePlate" Margin="0,2,0,8"/>
+                        <TextBlock Text="Reading Time" FontWeight="Bold"/>
+                        <DatePicker SelectedDate="{Binding TelemetryVM.ReadingTime}" Margin="0,2,0,8"/>
+                        <TextBlock Text="Distance Traveled (km)" FontWeight="Bold"/>
+                        <TextBox Text="{Binding TelemetryVM.DistanceTraveled, UpdateSourceTrigger=PropertyChanged}" Margin="0,2,0,8"/>
+                        <TextBlock Text="Fuel Consumption (L/100km)" FontWeight="Bold"/>
+                        <TextBox Text="{Binding TelemetryVM.FuelConsumption, UpdateSourceTrigger=PropertyChanged}" Margin="0,2,0,16"/>
+                        <Button Content="Add" Command="{Binding TelemetryVM.AddCommand}" Margin="0,2"/>
+                        <Button Content="Edit" Command="{Binding TelemetryVM.EditCommand}" Margin="0,2"/>
+                        <Button Content="Delete" Command="{Binding TelemetryVM.DeleteCommand}" Margin="0,2"/>
+                        <Separator Margin="0,8"/>
+                        <Button Content="Undo" Command="{Binding TelemetryVM.UndoCommand}" Margin="0,2"/>
+                        <Button Content="Redo" Command="{Binding TelemetryVM.RedoCommand}" Margin="0,2"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Chart">
+                <lvc:CartesianChart Series="{Binding ChartVM.Series}" XAxes="{Binding ChartVM.XAxes}" Margin="16"/>
+            </TabItem>
+            <TabItem Header="Log">
+                <ScrollViewer>
+                    <TextBox x:Name="LogTextBox" IsReadOnly="True" TextWrapping="Wrap"
+                             VerticalScrollBarVisibility="Auto" Margin="8"
+                             FontFamily="Consolas" FontSize="12"/>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>
